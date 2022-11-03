@@ -1,0 +1,26 @@
+pipeline {
+    agent any  
+     environment {
+         
+     } 
+    stages {
+        stage('GitHub Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '/master']], extensions: [], userRemoteConfigs: [[credentialsId: '8532eb11-f2e6-4712-8a8c-ff8dfafe4b46', url: 'https://github.com/puneetjindal1997/pipeline.git']]])
+            }
+        }
+    stage('prebuild') {
+        steps {
+            echo 'start pipeline'
+            sh 'go build .'
+        }
+
+    }
+    
+    }
+    post{
+	success{
+		cleanWs()
+		}
+		}
+}
