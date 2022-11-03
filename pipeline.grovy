@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('GitHub Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '/master']], extensions: [], userRemoteConfigs: [[credentialsId: '8532eb11-f2e6-4712-8a8c-ff8dfafe4b46', url: 'https://github.com/puneetjindal1997/pipeline.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[credentialsId: 'credid', url: 'https://github.com/puneetjindal1997/pipeline.git']]])
             }
         }
     stage('prebuild') {
